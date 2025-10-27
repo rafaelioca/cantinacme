@@ -22,11 +22,17 @@
   <link rel="stylesheet" href="CSS/modal-vendasprodutos.css">
   <link rel="stylesheet" href="CSS/modal-estoque.css">
   <link rel="stylesheet" href="CSS/modal-saida-estoque.css">
+  <link rel="stylesheet" href="CSS/responsive.css">
   <!-- Aqui você pode adicionar outros arquivos CSS depois -->
 </head>
 <body>
+  <!-- Botão Hamburguer e Overlay (aparecem só no mobile) -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu" aria-controls="menuLateral" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-overlay" id="menuOverlay"></div>
   <div class="app-container">
-    <nav class="menu-lateral">
+    <nav class="menu-lateral" id="menuLateral">
       <div class="menu-logo">
         <img src="img/LOGO CME.png" alt="Logo CME">
       </div>
@@ -257,6 +263,20 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
+    // Toggle do menu hambúrguer (mobile < 802px)
+    (function(){
+      const btn = document.getElementById('hamburgerBtn');
+      const overlay = document.getElementById('menuOverlay');
+      const menu = document.getElementById('menuLateral');
+      if(!btn || !overlay || !menu) return;
+      const closeMenu = () => { document.body.classList.remove('menu-open'); btn.setAttribute('aria-expanded','false'); };
+      const toggleMenu = () => { const open = document.body.classList.toggle('menu-open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+      btn.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a,button').forEach(el => el.addEventListener('click', closeMenu));
+    })();
+  </script>
+  <script>
     // Navegação entre telas
     $(".menu-opcao").click(function() {
       $(".menu-opcao").removeClass("ativo");
@@ -302,3 +322,4 @@
   </script>
 </body>
 </html>
+
