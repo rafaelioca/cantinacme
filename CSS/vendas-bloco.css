@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.vendas-bloco {
+  width: 30%;
+  height: 750px;
+  background: #d3eff3;
+  /* cor rosa suave */
+  border: 2px solid #0a3a4a;
+  border-radius: 28px;
+  box-sizing: border-box;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  position: relative;
+}
+
+.busca-clientes {
+  width: 80%;
+  font-size: 1.1em;
+  border-radius: 20px;
+  border: 2px solid #0a3a4a;
+  padding: 8px 16px;
+  outline: none;
+  font-family: inherit;
+}
+
+.btn-add-cliente {
+  background: #4caf50;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.lista-venda {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.lista-venda th, .lista-venda td {
+  font-family: 'Orbitron', Arial, sans-serif;
+  padding: 4px 8px;
+  text-align: left;
+}
+
+.lista-venda th {
+  font-weight: bold;
+}
+
+.observacao {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  width: 350px;
+  margin: 0;
+  border-radius: 20px;
+  border: 2px solid #0a3a4a;
+  padding: 8px 16px;
+  outline: none;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.total-venda {
+  color: #b40000;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 12px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  position: absolute;
+  bottom: 80px;
+  right: 24px;
+  left: 24px;
+  margin: 0;
+  width: calc(100% - 48px);
+}
+
+.btn-confirmar {
+  background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 32px;
+  font-size: 1.2em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  cursor: pointer;
+  margin-top: 8px;
+  float: right;
+  transition: background 0.2s;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  left: 24px;
+  margin: 0;
+  width: calc(100% - 48px);
+}
+
+.btn-confirmar:hover {
+  background: linear-gradient(90deg, #000851 0%, #1cb5e0 100%);
+}
+
+.vendas-titulo {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #420000;
+  font-family: 'Orbitron', Arial, sans-serif;
+}
+
+.vendas-nome-cliente {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #321ee9;
+  font-family: 'Orbitron', Arial, sans-serif;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .vendas-bloco {
+    width: 100%;
+    padding: 16px 8px;
+    border-radius: 18px;
+  }
+}

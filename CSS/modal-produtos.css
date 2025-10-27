@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.modal-produtos-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(81, 105, 129, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-produtos {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+  padding: 32px 24px;
+  min-width: 340px;
+  max-width: 400px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+}
+
+.modal-produtos h2 {
+  color: #008d00;
+  font-size: 1.4em;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.modal-produtos label {
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.modal-produtos input[type="text"],
+.modal-produtos input[type="number"] {
+  border-radius: 12px;
+  border: 2px solid #0a3a4a;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-family: inherit;
+  margin-bottom: 12px;
+}
+
+.modal-produtos .btn-salvar-produto {
+  background: #008d00;
+  color: #fff;
+  border-radius: 16px;
+  border: none;
+  padding: 10px 32px;
+  font-size: 1.1em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.modal-produtos .btn-salvar-produto:hover {
+  background: #000851;
+}
+
+.modal-produtos .btn-fechar-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #000000;
+  cursor: pointer;
+}
+
+#btnExcluirProduto {
+  background: #a30003;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 0;
+  width: 120px;
+  font-size: 0.95em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  margin: 20px auto 0 auto;
+  display: block;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#btnExcluirProduto:hover {
+  background: linear-gradient(90deg, #bb0600 0%, #f9d423 100%);
+  transform: scale(1.05);
+}

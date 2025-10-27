@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <script src="JS/html2pdf.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/LOGO CME.png">
+  <title>Relatórios - Cantina CME</title>
+  <link rel="stylesheet" href="CSS/layout-menu.css">
+  <link rel="stylesheet" href="CSS/menu-icons.css">
+  <link rel="stylesheet" href="CSS/relatorios.css">
+  <!-- Os CSS abaixo são exclusivos para relatorios.html -->
+  <link rel="stylesheet" href="CSS/modal-pagamento.css">
+  <link rel="stylesheet" href="CSS/modal-clientes.css">
+  <link rel="stylesheet" href="CSS/modal-produtos.css">
+  <link rel="stylesheet" href="CSS/modal-vendasprodutos.css">
+  <link rel="stylesheet" href="CSS/modal-estoque.css">
+  <link rel="stylesheet" href="CSS/modal-saida-estoque.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="menu-lateral">
+      <div class="menu-logo">
+        <img src="img/LOGO CME.png" alt="Logo CME">
+      </div>
+      <div class="menu-opcoes">
+        <a href="index.html" class="menu-opcao"><i class="fas fa-home"></i>Início</a>
+        <a href="relatorios.html" class="menu-opcao ativo" id="menu-relatorios"><i class="fas fa-chart-bar"></i>Relatórios</a>
+      </div>
+    </nav>
+    <main class="main-content">
+      <section id="tela-relatorios" class="tela" style="display:block;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Relatórios</h1>
+        <div class="relatorios-container">
+          <div class="relatorios-header">
+            <div class="relatorios-opcoes">
+              <button class="btn-relatorio">Vendas em aberto</button>
+              <button class="btn-relatorio">Vendas fechadas</button>
+              <button class="btn-relatorio">Relatórios de Pagamentos</button>
+              <button class="btn-relatorio">Relatório de Estoque</button>
+              
+            </div>
+          </div>
+          <div class="relatorio-bloco" id="relatorio-vendas-aberto" style="display:none;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:8px;">
+              <button class="btn-confirmar-relatorio" style="margin-top:8px;">Gerar Relatório</button>
+              <button id="btn-exportar-pdf-aberto" style="margin-top:8px;">Exportar PDF</button>
+            </div>
+            <div id="relatorio-vendas-em-aberto-resultado" style="margin-top:12px;"></div>
+          </div>
+          <div class="relatorio-bloco" id="relatorio-vendas-fechadas" style="display:none;">
+            <button class="btn-confirmar-relatorio" id="btn-gerar-relatorio-fechadas" style="margin-top:16px;">Gerar Relatório</button>
+            <button id="btn-exportar-pdf-fechadas" style="margin-top:12px;">Exportar PDF</button>
+            <div id="relatorio-vendas-fechadas-resultado" style="margin-top:24px;"></div>
+          </div>
+          <div class="relatorio-bloco" id="relatorio-pagamentos" style="display:none;">
+            <button class="btn-confirmar-relatorio" id="btn-gerar-relatorio-pagamentos" style="margin-top:16px;">Gerar Relatório</button>
+            <button id="btn-exportar-pdf-pagamentos" style="margin-top:12px;">Exportar PDF</button>
+            <div id="relatorio-pagamentos-resultado" style="margin-top:24px;"></div>
+          </div>
+          <div class="relatorio-bloco" id="relatorio-estoque" style="display:none;">
+            <button class="btn-confirmar-relatorio" id="btn-gerar-relatorio-estoque" style="margin-top:16px;">Gerar Relatório</button>
+            <button id="btn-exportar-pdf-estoque" style="margin-top:12px;">Exportar PDF</button>
+            <div id="relatorio-estoque-resultado" style="margin-top:24px;"></div>
+          </div>
+          
+          <div class="relatorio-bloco">
+            <p>Selecione um relatório acima para visualizar os dados.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="JS/relatorio-vendas-em-aberto.js"></script>
+  <script src="JS/relatorio-vendas-fechadas.js"></script>
+  <script src="JS/relatorio-pagamentos.js"></script>
+  <script src="JS/relatorio-estoque.js"></script>
+  <script src="JS/relatorios.js"></script>
+  <script>
+    // Guard de autenticação (v8) para páginas de relatórios
+    if (window.firebase && firebase.auth) {
+      firebase.auth().onAuthStateChanged(function(user){
+        if(!user){ window.location.href='login.html'; }
+      });
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Exibe o bloco correto do relatório ao clicar nos botões
+      const relatorioBtns = document.querySelectorAll('.btn-relatorio');
+      const blocos = document.querySelectorAll('.relatorio-bloco');
+      relatorioBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          relatorioBtns.forEach(b => b.classList.remove('ativo'));
+          btn.classList.add('ativo');
+          blocos.forEach(b => b.style.display = 'none');
+          if (btn.textContent.trim() === 'Vendas em aberto') {
+            document.getElementById('relatorio-vendas-aberto').style.display = 'block';
+          } else if (btn.textContent.trim() === 'Vendas fechadas') {
+            document.getElementById('relatorio-vendas-fechadas').style.display = 'block';
+          } else if (btn.textContent.trim() === 'Relatórios de Pagamentos') {
+            document.getElementById('relatorio-pagamentos').style.display = 'block';
+          } else if (btn.textContent.trim() === 'Relatório de Estoque') {
+            document.getElementById('relatorio-estoque').style.display = 'block';
+          } else {
+            blocos[blocos.length-1].style.display = 'block';
+          }
+        });
+      });
+      // Botão Gerar Relatório Vendas em Aberto
+      const btnGerarRelatorioAberto = document.querySelector('#relatorio-vendas-aberto .btn-confirmar-relatorio');
+      if (btnGerarRelatorioAberto) {
+        btnGerarRelatorioAberto.addEventListener('click', function() {
+          buscarVendasEmAberto();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

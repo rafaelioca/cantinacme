@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/LOGO CME.png">
+  <title>Vendas do Cliente</title>
+  <link rel="stylesheet" href="CSS/clientes-vendas.css">
+  <link rel="stylesheet" href="CSS/layout-menu.css">
+</head>
+<body>
+  <script type="module" src="JS/clientes-vendas.js"></script>
+  <script>
+    // Ao carregar, pega o nome do cliente da URL e abre o relatório
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const cliente = params.get('cliente');
+      if (cliente) {
+        document.title = 'Vendas - ' + cliente;
+        window.abrirVendasCliente(cliente);
+      } else {
+        document.body.innerHTML += '<div style="padding:32px;text-align:center;color:#e91e63;font-family:Orbitron,Arial,sans-serif;">Cliente não informado!</div>';
+      }
+    };
+  </script>
+</body>
+</html>

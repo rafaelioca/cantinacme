@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.modal-pagamento-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44,62,80,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-pagamento {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+  padding: 32px 24px;
+  min-width: 340px;
+  max-width: 400px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+}
+
+.modal-pagamento h2 {
+  color: #8d0808;
+  font-size: 1.4em;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.modal-pagamento label {
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.modal-pagamento input[type="text"] {
+  border-radius: 12px;
+  border: 2px solid #0a3a4a;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-family: inherit;
+  margin-bottom: 12px;
+}
+
+/* Centralização do botão já feita no HTML, removendo margin-top */
+.modal-pagamento .btn-salvar-pagamento {
+  background: #008d13;
+  color: #fff;
+  border-radius: 16px;
+  border: none;
+  padding: 10px 32px;
+  font-size: 1.1em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s;
+}
+/* Grupo de seleção de ícones */
+.icone-pagamento-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.icones-pagamento-opcoes {
+  display: flex;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.icone-pagamento-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label .icone-pagamento-img {
+  border: 2px solid #008d13;
+  box-shadow: 0 0 8px #008d1333;
+}
+
+.modal-pagamento .btn-salvar-pagamento:hover {
+  background: #000851;
+}
+
+.modal-pagamento .btn-fechar-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #005521;
+  cursor: pointer;
+}

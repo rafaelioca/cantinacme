@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.clientes-container {
+  width: 100%;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: 'Orbitron', Arial, sans-serif;
+}
+
+.clientes-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.busca-clientes {
+  flex: 1;
+  max-width: 320px;
+  font-size: 1.1em;
+  border-radius: 20px;
+  border: 2px solid #0a3a4a;
+  padding: 8px 16px;
+  outline: none;
+  font-family: inherit;
+}
+
+.btn-add-clientes {
+  background: #008d00;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  width: 180px;
+  height: 40px;
+  font-size: 0.8em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s;
+}
+
+.btn-add-clientes:hover {
+  background: #000851;
+}
+
+.lista-clientes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card-cliente {
+  width: 550px;
+  background: #fff;
+  border: 2px solid #0a3a4a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1em;
+  box-sizing: border-box;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.nome-cliente {
+  font-weight: bold;
+  color: #222;
+  flex: 2;
+  cursor: pointer;               /* indica que o nome é clicável */
+  text-decoration: underline;    /* sublinhado suave */
+  text-decoration-color: transparent; /* só aparece no hover */
+  transition: text-decoration-color 0.15s ease;
+}
+
+.nome-cliente:hover {
+  text-decoration-color: currentColor; /* mostra o sublinhado no hover */
+}
+
+.telefone-cliente {
+  color: #aaa;
+  flex: 2;
+  text-align: left;
+}
+
+.btn-editar-cliente, .btn-apagar-cliente {
+  background: none;
+  border: none;
+  color: #1cb5e0;
+  font-size: 1.1em;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-apagar-cliente {
+  color: #e91e63;
+}
+
+.btn-editar-cliente:hover {
+  color: #000851;
+}
+
+.btn-apagar-cliente:hover {
+  color: #b71c1c;
+}
+
+@media (min-width: 1200px) {
+  .lista-clientes {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .card-cliente {
+    width: calc(50% - 16px);
+    min-width: 320px;
+    max-width: 550px;
+  }
+}
+
+/* Adicione mais estilos específicos para o menu clientes conforme for evoluindo o layout */

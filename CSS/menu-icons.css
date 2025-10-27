@@ -1,0 +1,18 @@
+/* Ícones do menu usando Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+/* ...existing code... */
+/* Adicione estilos para ícones e ajuste do menu */
+.menu-opcao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* ...existing code... */
+}
+.menu-opcao i {
+  font-size: 1.2em;
+  color: var(--accent);
+  min-width: 22px;
+  text-align: center;
+}
+/* ...existing code... */

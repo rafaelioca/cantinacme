@@ -1,0 +1,83 @@
+Eu quero criar um sistema, com autenticação através do firebase onde ele funcionará como uma espécie de PDV (Ponto de Vendas) e responsivo para celular.
+Utilizar a linguagem Jquery e Ajax quando for possível.
+
+A diferença é que ele terá uma opção de marcar o consumo para o cliente, como forma de pagamento principal e no final ele pode quitar essa compra.
+
+Pensei da seguinte forma: Um menu lateral com 5 opções (cada um com sua tela, mas na mesma página) sendo elas Vendas, produtos, clientes e relatórios e Formas de Pagamento.
+
+Vou discriminar cada um deles:
+
+Vendas:
+Nessa tela aparecerão os produtos cadastrados sendo a imagem do produto com o nome em baixo dele e o valor de venda.
+Na parte superior, um campo de busca, onde ao digitar o nome do produto vai ficando na tela apenas os que contêm os caracteres digitado neste campo de busca. Em questão de largura, isso ocupará cerca de 70% da tela(falando em um desktop). o restate será uma área para inserir o nome do cliente (já cadastrado), onde funcionará semelhante aos produtos, ao digitar, vai aparecendo os nomes em uma caixa de acordo com o que for digitado. Ao lado dessa caixa, um botão "+" que servirá para adicionar um cliente de forma rápida. Contendo o nome e o telefone.
+Conforme clicamos no produto, ele vai aparecendo em forma de lista abaixo do cliente (Tudo na mesma tela).
+Em cada item cadastrado, aparecer também um botão (Desenho de uma lixeira", para excluir o item.
+
+No final da tela (na parte de cliente), deve aparecer o valor total da compra, uma caixa de observação (não obrigatório o preenchimento) e um botão grande escrito "Confirmar compra"
+
+Ao clicar nesse botão essa compra, aparece uma mensagem de confirmação "Confirmar compra?" com os botões "Sim e Não"
+Depois de confirmado a compra, essa venda deve ser registrada no firebase com a data e hora da compra, valor total e os itens comprados.
+
+Agora vamos falar da tela Produtos:
+
+Nesta tela mostra todos os produtos (imagem e nome) e suas quantidades de estoque.
+além de um botão no canto superior da tela, de busca do produto e ao seu lado um outro para adicionar produtos. Os dados necessários para adicionar produtos são:
+-Nome do Produto
+-Imagem
+-Quantidade
+-Valor de Venda
+
+Ao clicar em um produto já cadastrado, alí deve mostrar os dados do produto (Nome, imgem, valor de venda e Quantidade atual de estoque), junto com um botão para editar tais informações.
+
+Em algum lugar desta tela, deve haver um local para adicionar o estoque, ou seja, a entrada de produtos já cadastrados (com uma opção de adicionar um produto de forma rápida). Para adicionar esse estoque, ao clicar no botão "Adicionar" pode abrir uma tela, onde eu insiro o local de compra, valor de compra de cada produto e quantidade (Mais ou menos igual o pdv, porém agora acrescentaremos produtos no estoque ao invés de remove-los.
+
+No menu clientes, constará todos os clientes cadastrados, e um campo de busca na parte superior para facilitar. Ao lado do campo de busca, deve aparecer um botão para adicionar clientes (semelhante ao do menu Vendas)
+
+Ao clicar no Cliente, deve aparecer seus dados e todos os produtos que foram comprados por ele, porém lembramos e esses produtos ainda não foram pagos, apenas marcados. Essa lista deve mostrar os produtos comprados, os valores, a data e a hora e a observação (se houver)
+Isso pode estar separado por compra.
+Em cada item, pode haver uma check box, inicialmente já selecionada, mas com a opção de remover essa seleção, e se for removido, o valor final deve ser descontado, porém essa compra continua atrelada ao cliente, pois a mesma ainda não foi paga
+
+No final o valor total dos produtos marcados e um botão escrito "PAGAR"
+
+Ao clicar em pagar, aparecerá as formas de pagamento cadastradas sendo necessário selecionar uma delas para que seja possível concluir o pagamento, o valor pago (deixando inicialmente neste campo o valor devido, porém dando possibilidade para alterar) e por fim o botão "Concluir" (que lembrando, só será habilitado se tiver uma forma de pagamento selecionada e o valor preenchido, que deve ser no mínimo o valor devido. Quando for concluído, os produtos marcados, devem sair da conta do cliente pois a lista apenas mostra os produtos não pagos, e posteriormente ele deve constar no relatório na opção de "Vendas fechadas"
+
+No menu Relatórios quero que tenha opções dos seguintes relatórios:
+
+-Vendas em aberto
+-Vendas fechadas
+-Relatórios de Pagamentos
+-Relatório de Estoque
+-Gastos x Ganhos
+
+Vou descrever cada um:
+
+Vendas em aberto:
+São todas as vendas que foram feitas mas ainda não foram pagas, esse relatório deve ter a opção de mostrar um ou mais clientes, ou até mesmo todos, sendo no final do relatório, mostrar o valor total devido de cada cliente selecionado e a soma de todos eles no final do relatório. Se possível podendo exportar esse relatório para PDF, e ainda se possível, fazer um botão para exportar os relatórios de cada cliente separadamente (em arquivos separados). Ao exportar, mostrar a caixa de opção para em que pasta quer salvar.
+
+Em vendas fechadas, pode fazer a mesma coisa que o vendas abertas, porém aqui vai mostar todas as vendas que foram pagas, tendo as mesmas opções do vendas em aberto, ou seja, exportar, selecionar um ou mais clientes, botão para exportar todos e etc.
+
+No relatório de pagamentos, mostram todos os pagamentos já realizados, mas aqui mostram separados por "Formas de Pagamento"
+
+Todos podem ficar em um único relatório, mas descriminando os valores pagos separadamente, e no final, o total. 
+Também gostaria de exportar esse relatório.
+
+No relatório de estoque. Aqui háverá dois tipos de relatório. O primeiro deve mostrar a quantidade de cada produto ainda em estoque, a quantidade de vendas de cada produto. Exemplo: 
+Coca-Cola
+Estoque: 23   Vendas:12
+
+No outro relatório de estoque, consta todos os lançamentos de estoque por ordem de lançamento, contendo o dia e a hora do lançamento, o local de compra e os produtos com suas quantidades e valores pagos. Tudo isso com possibilidade de exportar para pdf.
+
+Por fim no relatório de Ganhos x Gastos.
+
+Aqui eu quero um relatório onde mostra cada produto, o valor pago, o valor vendido quanto deu de lucro ou prejuízo e quantidade em estoque.
+
+No final, quero um resumo mostrando quanto de lucro ou prejuízo deu no final. 
+
+Também possível exportar em PDF
+
+O ultimo menu, será o de formas de pagamento.
+Aqui eu quero algo simples, mostrando as formas de pagamento cadastradas e a opção de adicionar uma forma de pagamento.
+
+O que precisa para fazer isso?
+Pode fazer um layout e aos poucos vamos arrumando?
+

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="img/LOGO CME.png">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantina CME - PDV</title>
+  <link rel="stylesheet" href="CSS/layout-menu.css">
+  <link rel="stylesheet" href="CSS/menu-icons.css">
+  <link rel="stylesheet" href="CSS/vendas-produtos.css">
+  <link rel="stylesheet" href="CSS/vendas-bloco.css">
+  <link rel="stylesheet" href="CSS/produtos.css">
+  <link rel="stylesheet" href="CSS/clientes.css">
+  <link rel="stylesheet" href="CSS/estoque.css">
+  <link rel="stylesheet" href="CSS/pagamento.css">
+  <link rel="stylesheet" href="CSS/relatorios.css">
+  <link rel="stylesheet" href="CSS/modal-pagamento.css">
+  <link rel="stylesheet" href="CSS/modal-clientes.css">
+  <link rel="stylesheet" href="CSS/modal-produtos.css">
+  <link rel="stylesheet" href="CSS/modal-vendasprodutos.css">
+  <link rel="stylesheet" href="CSS/modal-estoque.css">
+  <link rel="stylesheet" href="CSS/modal-saida-estoque.css">
+  <!-- Aqui você pode adicionar outros arquivos CSS depois -->
+</head>
+<body>
+  <div class="app-container">
+    <nav class="menu-lateral">
+      <div class="menu-logo">
+        <img src="img/LOGO CME.png" alt="Logo CME">
+      </div>
+      <div class="menu-opcoes">
+  <button class="menu-opcao ativo" id="menu-vendas"><i class="fas fa-shopping-cart"></i>Vendas</button>
+  <button class="menu-opcao" id="menu-produtos"><i class="fas fa-box"></i>Produtos</button>
+  <button class="menu-opcao" id="menu-clientes"><i class="fas fa-user"></i>Clientes</button>
+  <button class="menu-opcao" id="menu-entrada"><i class="fas fa-box-open"></i>Entrada de Produtos</button>
+  <button class="menu-opcao" id="menu-pagamento"><i class="fas fa-credit-card"></i>Formas de Pagamento</button>
+  <a href="relatorios.html" target="_self" class="menu-opcao" id="menu-relatorios"><i class="fas fa-chart-bar"></i>Relatórios</a>
+      </div>
+    </nav>
+    <main class="main-content">
+      <!-- Conteúdo das telas será inserido aqui -->
+      <section id="tela-vendas" class="tela" style="display:block;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Vendas</h1>
+        <div style="display:flex;gap:32px;align-items:flex-start;justify-content:center;width:100%;">
+          <div class="vendas-produtos">
+            <div class="busca-produtos-bloco">
+              <input type="text" class="busca-produtosvendas" placeholder="Busca de produtos">
+              <button class="btn-add-produto"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="lista-produtos">
+              <!-- Os cards de produtos serão inseridos dinamicamente via JS -->
+            </div>
+          </div>
+          <div class="vendas-bloco">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="text" class="busca-clientes" placeholder="Busca de clientes">
+              <button class="btn-add-cliente"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="vendas-nome-cliente">Nome do Cliente</div>
+            <table class="lista-venda">
+              <thead>
+                <tr><th class="vendas-titulo">Item</th><th class="vendas-titulo">QTD</th><th class="vendas-titulo">Valor</th></tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+            <input type="text" class="observacao" placeholder="Observação">
+            <div class="total-venda">TOTAL<br>R$ 0,00</div>
+            <button class="btn-confirmar">Confirmar compra</button>
+          </div>
+        </div>
+      </section>
+      <section id="tela-produtos" class="tela" style="display:none;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Produtos</h1>
+        <div class="produtos-container">
+          <div class="produtos-header">
+            <input type="text" class="busca-produtos" placeholder="Busca de produtos">
+            <button class="btn-add-produto">Adicionar Produtos</button>
+          </div>
+          <div class="lista-produtos-geral">
+            <!-- Os cards de produtos serão inseridos dinamicamente via JS -->
+          </div>
+        </div>
+      </section>
+      <section id="tela-entrada" class="tela" style="display:none;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Entrada de Estoque</h1>
+        <div class="estoque-container">
+          <div class="estoque-header">
+            <button class="btn-entrada">Adicionar Entrada</button>
+            <button class="btn-saida">Adicionar Saída</button>
+          </div>
+          <div class="lista-estoque">
+            <!-- Removidos os cards de exemplo de entrada de estoque -->
+          </div>
+        </div>
+      </section>
+      <section id="tela-clientes" class="tela" style="display:none;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Clientes</h1>
+        <div class="clientes-container">
+          <div class="clientes-header">
+            <input type="text" class="busca-clientes" placeholder="Busca de clientes">
+            <button class="btn-add-clientes">Adicionar Clientes</button>
+          </div>
+          <div class="lista-clientes">
+            <div class="card-cliente">
+              <span class="nome-cliente">Nome do cliente</span>
+              <span class="telefone-cliente">Telefone do cliente</span>
+              <button class="btn-editar-cliente"><i class="fas fa-pencil-alt"></i></button>
+              <button class="btn-apagar-cliente"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="card-cliente">
+              <span class="nome-cliente">Nome do cliente</span>
+              <span class="telefone-cliente">Telefone do cliente</span>
+              <button class="btn-editar-cliente"><i class="fas fa-pencil-alt"></i></button>
+              <button class="btn-apagar-cliente"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="card-cliente">
+              <span class="nome-cliente">Nome do cliente</span>
+              <span class="telefone-cliente">Telefone do cliente</span>
+              <button class="btn-editar-cliente"><i class="fas fa-pencil-alt"></i></button>
+              <button class="btn-apagar-cliente"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="tela-pagamento" class="tela" style="display:none;">
+        <h1 style="text-align:center;color:#a52a2a;font-family:'Orbitron',Arial,sans-serif;">Formas de Pagamento</h1>
+        <div class="pagamento-container">
+          <div class="pagamento-header">
+            <button class="btn-add-pagamento" id="btnAdicionarPagamento">Adicionar Forma de Pagamento</button>
+          </div>
+          <div class="lista-pagamento"></div>
+        </div>
+      </section>
+      <!-- Modal Adicionar/Editar Forma de Pagamento -->
+      <div class="modal-pagamento-bg" id="modalPagamentoBg" style="display:none;">
+        <div class="modal-pagamento">
+          <button class="btn-fechar-modal" id="btnFecharModalPagamento" title="Fechar">&times;</button>
+          <h2>Adicionar Forma de Pagamento</h2>
+          <form id="formPagamento">
+            <label for="formaPagamento">Forma de Pagamento</label>
+            <input type="text" id="formaPagamento" name="formaPagamento" placeholder="Ex: Cartão, Dinheiro, Pix" required>
+            <div class="icone-pagamento-group">
+              <label>Selecione o ícone:</label>
+              <div class="icones-pagamento-opcoes">
+                <input type="radio" id="iconeCartao" name="iconePagamento" value="cartao.png" required>
+                <label for="iconeCartao"><img src="img/Pagamento/cartao.png" alt="Cartão" class="icone-pagamento-img"></label>
+                <input type="radio" id="iconeDinheiro" name="iconePagamento" value="dinheiro.webp">
+                <label for="iconeDinheiro"><img src="img/Pagamento/dinheiro.webp" alt="Dinheiro" class="icone-pagamento-img"></label>
+                <input type="radio" id="iconePix" name="iconePagamento" value="pix.webp">
+                <label for="iconePix"><img src="img/Pagamento/pix.webp" alt="Pix" class="icone-pagamento-img"></label>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:center;margin-top:18px;">
+              <button type="submit" class="btn-salvar-pagamento">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Modal Adicionar/Editar Cliente -->
+      <div class="modal-clientes-bg" id="modalClientesBg" style="display:none;">
+        <div class="modal-clientes">
+          <button class="btn-fechar-modal" id="btnFecharModalCliente" title="Fechar">&times;</button>
+          <h2>Adicionar Cliente</h2>
+          <form id="formCliente">
+            <label for="nomeCliente">Nome</label>
+            <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome do cliente" required>
+            <label for="telefoneCliente">Telefone</label>
+            <input type="text" id="telefoneCliente" name="telefoneCliente" placeholder="(99) 99999-9999" required>
+            <div style="display:flex;justify-content:center;margin-top:18px;">
+              <button type="submit" class="btn-salvar-cliente">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Modal Adicionar/Editar Produto -->
+      <div class="modal-produtos-bg" id="modalProdutosBg" style="display:none;">
+        <div class="modal-produtos">
+          <button class="btn-fechar-modal" id="btnFecharModalProduto" title="Fechar">&times;</button>
+          <h2>Adicionar Produto</h2>
+          <form id="formProduto">
+            <div class="campo-modal">
+              <label for="nomeProduto">Nome do Produto</label>
+              <input type="text" id="nomeProduto" name="nomeProduto" placeholder="Nome do produto" required>
+            </div>
+            <div class="campo-modal">
+              <label for="imagemProduto">Imagem Produto (URL)</label>
+              <input type="text" id="imagemProduto" name="imagemProduto" placeholder="Cole o link da imagem" required>
+            </div>
+            <div class="campo-modal">
+              <label for="precoProduto">Valor de Venda</label>
+              <input type="number" id="precoProduto" name="precoProduto" min="0" step="0.01" placeholder="Preço (R$)" required>
+            </div>
+            <div style="display:flex;justify-content:center;margin-top:18px;">
+              <button type="submit" class="btn-salvar-produto">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Modal Entrada de Estoque -->
+      <div class="modal-estoque-bg" id="modalEstoqueBg" style="display:none;">
+        <form class="modal-estoque" id="formEstoque">
+          <!-- Botão fechar moderno -->
+          <button type="button" id="btnFecharModalEstoque" style="position:absolute;top:12px;right:18px;background:#a52a2a;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;">×</button>
+          <h2 style="display:flex;align-items:center;gap:12px;">Entrada de Estoque
+            <button type="button" id="btnAddProdutoDireto" style="background:#27ae60;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(39,174,96,0.08);">+</button>
+          </h2>
+          <input type="date" id="dataEstoque" required>
+          <input type="text" id="localEstoque" placeholder="Local da compra" required>
+          <div class="produtos-estoque-bloco">
+            <label style="font-weight:bold;">Produtos</label>
+            <input type="text" class="busca-produto-estoque" placeholder="Buscar produto para adicionar">
+            <div class="sugestoes-produto-estoque"></div>
+            <div class="produtos-estoque-lista">
+              <div class="produtos-estoque-titulos">
+                <span style="min-width:120px;">Produto</span>
+                <span style="width:60px;">QTD</span>
+                <span style="width:80px;">Valor de Compra</span>
+              </div>
+              <!-- Produtos selecionados aparecerão aqui -->
+            </div>
+            <div class="valor-total-estoque" style="margin-top:12px;font-weight:bold;color:#0a3a4a;font-size:1.1em;">Valor Total: R$ 0,00</div>
+          </div>
+          <!-- Botão salvar moderno -->
+          <button type="submit" id="btnSalvarEstoque" style="width:100%;background:#27ae60;color:#fff;border:none;border-radius:8px;padding:10px 0;font-size:18px;font-family:'Orbitron',Arial,sans-serif;cursor:pointer;margin-top:18px;box-shadow:0 2px 8px rgba(39,174,96,0.08);transition:background 0.2s;">Salvar</button>
+        </form>
+      </div>
+      <!-- Fim Modal Entrada de Estoque -->
+      <!-- Modal Saída de Estoque -->
+      <div class="modal-saida-estoque-bg" id="modalSaidaEstoqueBg" style="display:none;">
+        <form class="modal-saida-estoque" id="formSaidaEstoque" style="position:relative;max-width:500px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 2px 24px rgba(0,0,0,0.12);padding:32px 24px;">
+          <button type="button" id="btnFecharModalSaidaEstoque" style="position:absolute;top:12px;right:18px;background:#d10202;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;">×</button>
+          <h2 style="display:flex;align-items:center;gap:12px;">Saída de Estoque</h2>
+          <input type="date" id="dataSaidaEstoque" required>
+          <input type="text" id="motivoSaidaEstoque" placeholder="Motivo da saída" required>
+          <div class="produtos-saida-estoque-bloco">
+            <label style="font-weight:bold;">Produtos</label>
+            <input type="text" class="busca-produto-saida-estoque" placeholder="Buscar produto para adicionar">
+            <div class="sugestoes-produto-saida-estoque"></div>
+            <div class="produtos-saida-estoque-lista">
+              <div class="produtos-saida-estoque-titulos">
+                <span style="min-width:120px;">Produto</span>
+                <span style="width:60px;">QTD</span>
+              </div>
+              <!-- Produtos selecionados aparecerão aqui -->
+            </div>
+          </div>
+          <button type="submit" id="btnSalvarSaidaEstoque" style="width:100%;background:#b10000;color:#fff;border:none;border-radius:8px;padding:10px 0;font-size:18px;font-family:'Orbitron',Arial,sans-serif;cursor:pointer;margin-top:18px;box-shadow:0 2px 8px rgba(233,30,99,0.08);transition:background 0.2s;">Salvar</button>
+        </form>
+      </div>
+      <!-- Fim Modal Saída de Estoque -->
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // Navegação entre telas
+    $(".menu-opcao").click(function() {
+      $(".menu-opcao").removeClass("ativo");
+      $(this).addClass("ativo");
+      var id = $(this).attr("id").replace("menu-", "tela-");
+      $(".tela").hide();
+      $("#"+id).show();
+    });
+    // Observação: Os relatórios foram movidos para relatorios.html.
+  </script>
+  <script type="module">
+    import { auth } from './JS/firebase-init.js';
+    import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        if (!location.pathname.toLowerCase().endsWith('/login.html')) {
+          window.location.href = 'login.html';
+        }
+        return;
+      }
+
+      // Usuário autenticado: importa módulos protegidos
+  import('./JS/pagamento.js');
+      import('./JS/clientes.js');
+  import('./JS/clientes-vendas.js');
+      import('./JS/produtos.js');
+      import('./JS/vendas.js');
+      import('./JS/estoque.js');
+      import('./JS/saida-estoque.js');
+
+      // Carrega scripts não-modulares dinamicamente (se necessário)
+      const loadScript = (src, isModule = false) => {
+        const s = document.createElement('script');
+        if (isModule) s.type = 'module';
+        s.src = src;
+        s.defer = true;
+        document.body.appendChild(s);
+      };
+
+      // Relatórios migrados para relatorios.html: scripts específicos não são carregados aqui.
+    });
+  </script>
+</body>
+</html>

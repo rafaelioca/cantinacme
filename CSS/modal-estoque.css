@@ -1,0 +1,131 @@
+/* Modal de Entrada/Saída de Estoque */
+.modal-estoque-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100001 !important;
+}
+
+.modal-estoque {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  padding: 32px 24px;
+  width: 500px;
+  max-width: 95vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-estoque h2 {
+  color: #0a4a15;
+  font-size: 1.4em;
+  margin-bottom: 18px;
+}
+
+
+.modal-estoque input,
+.modal-estoque select {
+  width: 90%;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #0a3a4a;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+/* Produtos adicionados na entrada de estoque */
+.produtos-estoque-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.produto-estoque-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.produto-estoque-item .nome-produto-estoque-label {
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 1em;
+  color: #0a3a4a;
+}
+.produto-estoque-item input.qtd-produto-estoque,
+.produto-estoque-item input.valor-produto-estoque {
+  width: 70px;
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 0;
+  font-size: 1em;
+}
+.produto-estoque-item .btn-remover-produto-estoque {
+  background: #a52a2a;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.modal-estoque .btn-fechar {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: #2c0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 18px;
+  cursor: pointer;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(233,30,99,0.08);
+  transition: background 0.2s;
+  margin-top: 0;
+}
+
+.modal-estoque .btn-salvar {
+  background: #006120;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Modal de Produtos */
+.modal-produtos-bg {
+  z-index: 100002 !important;
+}
+
+/* Placeholder Saída de Estoque */
+.modal-saida-estoque input::placeholder,
+.modal-saida-estoque .busca-produto-saida-estoque::placeholder {
+  color: #27ae60;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}

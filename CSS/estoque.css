@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.estoque-container {
+  width: 100%;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: 'Orbitron', Arial, sans-serif;
+}
+
+.estoque-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.btn-entrada {
+  background: #2ecc40;
+  color: #fff;
+  border-radius: 20px;
+  border: 2px solid #0a3a4a;
+  width: 200px;
+  height: 40px;
+  font-size: 1.1em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s;
+}
+
+.btn-entrada:hover {
+  background: #27ae60;
+}
+
+.btn-saida {
+  background: #e91e1e;
+  color: #fff;
+  border-radius: 20px;
+  border: 2px solid #0a3a4a;
+  width: 200px;
+  height: 40px;
+  font-size: 1.1em;
+  font-family: 'Orbitron', Arial, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s;
+}
+
+.btn-saida:hover {
+  background: #ff7c7c;
+}
+
+.lista-estoque {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-estoque {
+  background: #fff;
+  border: 2px solid #0a3a4a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.2em;
+  box-sizing: border-box;
+  gap: 16px;
+  width: 900px;
+}
+
+.card-estoque .data-compra {
+  color: #aaa;
+  flex: 2;
+}
+
+.card-estoque .local-compra {
+  font-weight: bold;
+  color: #222;
+  flex: 2;
+}
+
+.card-estoque .valor-compra {
+  font-weight: bold;
+  flex: 2;
+}
+
+.card-estoque .btn-editar-estoque {
+  background: none;
+  border: none;
+  color: #222;
+  font-size: 1.1em;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.card-estoque .btn-editar-estoque:hover {
+  color: #1cb5e0;
+}
+
+@media (max-width: 1000px) {
+  .card-estoque {
+    width: 100%;
+    font-size: 1em;
+    padding: 12px 8px;
+  }
+}

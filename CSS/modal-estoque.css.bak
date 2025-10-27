@@ -1,0 +1,74 @@
+/* Modal de Entrada/Saída de Estoque */
+.modal-estoque-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-estoque {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 32px 24px;
+  width: 600px;
+  min-width: 320px;
+  max-width: 100vw;
+  font-family: 'Orbitron', Arial, sans-serif;
+  position: relative;
+}
+
+.modal-estoque h2 {
+  color: #0a3a4a;
+  font-size: 1.4em;
+  margin-bottom: 18px;
+}
+
+.modal-estoque input,
+.modal-estoque select {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #0a3a4a;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.modal-estoque .busca-produto-estoque {
+  width: 90%;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #0a3a4a;
+  font-size: 1em;
+  font-family: inherit;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-estoque .btn-fechar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #030303;
+  cursor: pointer;
+}
+
+.modal-estoque .btn-salvar {
+  background: #017a30;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 8px;
+}
